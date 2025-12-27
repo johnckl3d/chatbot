@@ -1,12 +1,9 @@
 using AIChatApp.Components;
 using AIChatApp.Model;
 using AIChatApp.Services;
-using Azure;
-using Azure.Core; // <-- Add this line
 using Azure.Identity;
-using Microsoft.Extensions.Configuration.Json;
 using Microsoft.SemanticKernel;
-
+using Microsoft.Extensions.Configuration.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +22,6 @@ if (String.IsNullOrEmpty(aiHost))
 {
     aiHost = "OpenAI";
 }
-
-
-AzureKeyCredential credential = new AzureKeyCredential(builder.Configuration["AZURE_OPENAI_KEY"]!);
-
-
 
 switch (aiHost) {
     case "github":
@@ -51,12 +43,9 @@ switch (aiHost) {
             endpoint: new Uri(builder.Configuration["LOCAL_ENDPOINT"]!));
         break;
     default:
-        //builder.Services.AddAzureOpenAIChatCompletion(builder.Configuration["AZURE_OPENAI_DEPLOYMENT"]!,
-        //    builder.Configuration["AZURE_OPENAI_ENDPOINT"]!,
-        //    new DefaultAzureCredential());
-        builder.Services.AddKernel().AddAzureOpenAIChatCompletion(
-    builder.Configuration["AZURE_OPENAI_DEPLOYMENT"]!,
-    builder.Configuration["AZURE_OPENAI_ENDPOINT"]!);
+        builder.Services.AddAzureOpenAIChatCompletion(builder.Configuration["AZURE_OPENAI_DEPLOYMENT"]!,
+            builder.Configuration["AZURE_OPENAI_ENDPOINT"]!,
+            new DefaultAzureCredential());
         break;
 }
 
