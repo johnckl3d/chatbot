@@ -1,5 +1,3 @@
-#!/bin/bash
-
 function set_dotnet_user_secrets() {
     local path="$1"
     local lines="$2"
@@ -26,4 +24,4 @@ function set_dotnet_user_secrets() {
 
 # Get all of the generated env variables, and store them as user secrets for the project
 lines=$(azd env get-values)
-set_dotnet_user_secrets "./src/AIChatApp.AppHost/" "$lines"
+set_dotnet_user_secrets "./src/AIChatApp/" "$lines"

@@ -5,11 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C#: AIChatApp.AppHost [https]",
+            "name": "C#: AIChatApp Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/src/AIChatApp.AppHost/AIChatApp.AppHost.csproj",
-            "launchConfigurationId": "TargetFramework=;https"
+            "projectPath": "${workspaceFolder}/src/AIChatApp/AIChatApp.csproj"
         }
 
     ]
