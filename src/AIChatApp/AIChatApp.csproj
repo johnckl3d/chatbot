@@ -9,6 +9,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="Azure.Core" Version="1.50.0" />
     <PackageReference Include="Azure.Identity" Version="1.12.1" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.22.0" />
     <PackageReference Include="Microsoft.SemanticKernel.Connectors.AzureAIInference" Version="1.22.0-beta" />
