@@ -27,7 +27,10 @@ internal class ChatService(IChatCompletionService chatService)
 
         await foreach (StreamingChatMessageContent content in response)
         {
-            yield return (content.Content);
+            if (content.Content is not null)
+            {
+                yield return content.Content;
+            }
         }
     }
 
