@@ -45,7 +45,7 @@ switch (aiHost) {
     default:
         builder.Services.AddAzureOpenAIChatCompletion(builder.Configuration["AZURE_OPENAI_DEPLOYMENT"]!,
             builder.Configuration["AZURE_OPENAI_ENDPOINT"]!,
-            new DefaultAzureCredential());
+            builder.Configuration["AZURE_OPENAI_KEY"]!);
         break;
 }
 
