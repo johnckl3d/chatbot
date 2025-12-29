@@ -43,9 +43,9 @@ switch (aiHost) {
             endpoint: new Uri(builder.Configuration["LOCAL_ENDPOINT"]!));
         break;
     default:
-        builder.Services.AddAzureOpenAIChatCompletion(builder.Configuration["AZURE_OPENAI_DEPLOYMENT"]!,
-            builder.Configuration["AZURE_OPENAI_ENDPOINT"]!,
-            builder.Configuration["AZURE_OPENAI_KEY"]!);
+        builder.Services.AddAzureOpenAIChatCompletion(builder.Configuration["AZURE_OPENAI_CHAT_DEPLOYMENT"]!,
+            builder.Configuration["AZURE_OPENAI_CHAT_ENDPOINT"]!,
+            builder.Configuration["AZURE_OPENAI_CHAT_KEY"]!);
         break;
 }
 
