@@ -407,3 +407,4 @@ FodyWeavers.xsd
 # AZD
 .[aA]zure/
 src/AIChatApp/appsettings.Development.json
+src/AIChatApp/appsettings.Production.json
