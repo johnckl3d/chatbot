@@ -77,7 +77,15 @@ internal class ChatService
         AzureOpenAIClient azureClient = new(new Uri(_chatEndpoint), credential);
 
         ChatClient chatClient = azureClient.GetChatClient("gpt-4.1-mini");
-        ChatCompletionOptions options = new();
+
+
+        var chatHistory = new List<ChatMessage>
+        {
+           ChatMessage.CreateSystemMessage("You are a helpful assistant that answers questions using only data from ai index. If the answer is not in the data, state that you cannot find the information.")
+        };
+        chatHistory.Add(GetLatestUserMessage(history));
+
+        ChatCompletionOptions options = new ();
 
         options.AddDataSource(new AzureSearchChatDataSource()
         {
@@ -86,8 +94,9 @@ internal class ChatService
             Authentication = DataSourceAuthentication.FromApiKey(_searchKey),
         });
 
+
         ChatCompletion completion = await chatClient.CompleteChatAsync(
-            [new UserChatMessage(GetLatestUserMessage(history))],
+            chatHistory,
             options
             );
 
